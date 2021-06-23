@@ -1,139 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ person.first_name }} - CV</title>
-    
-    <!-- Meta -->
-    <meta charset="utf-8">
+<html>
+    <head>
+        <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <!-- FontAwesome JS-->
-	<script defer src="{{ url_for('static', filename='vendor/fontawesome/all.min.js') }}"></script>
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">   
-    <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='css/orbit-4.css') }}">
-    
-</head> 
+    <!-- Theme CSS -->
+<!--    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">-->
+        <link href="../static/css/resume.css" rel="stylesheet" type="text/css">
+    </head>
 
-<body>
-    <div class="wrapper">
-        <div class="main-wrapper">
-            
-            <section class="section summary-section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Career Profile</h2>
-                <div class="summary">
-                    <p> {{ person.description }}</p>
-                </div><!--//summary-->
-            </section><!--//section-->
-            
-            <section class="section experiences-section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>Experiences</h2>
-                
-                {% for experience in person.experiences %}
-                <div class="item">
-                    <div class="meta">
-                        <div class="upper-row">
-                            <h3 class="job-title">{{ experience.title }}</h3>
-                            <div class="time">{{ experience.timeframe }}</div>
-                        </div><!--//upper-row-->
-                        <div class="company">{{ experience.company }}</div>
-                    </div><!--//meta-->
-                    <div class="details">
-                        <p>{{ experience.description }}</p>  
-                    </div><!--//details-->
-                </div><!--//item-->
-                {% endfor %}
-                
-            </section><!--//section-->
-            
-            <section class="section education-section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-university"></i></span>Education</h2>
+    <body>
+        <div class="rela-block page">
+        <div class="rela-block top-bar">
+            <div class="caps name"><div class="abs-center">{{person.name}}</div></div>
+        </div>
+        <div class="side-bar">
+            <div class="mugshot">
+                <div class="logo">
+                    <svg viewbox="0 0 80 80" class="rela-block logo-svg">
+<!--                        <img src="{{ url_for('static', filename='img/img_nono.jpg') }}" alt="" />-->
+                        <path d="M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z" stroke-width="2.5" fill="none"/>
 
-                {% for diploma in person.education %}
-                <div class="item">
-                    <div class="meta">
-                        <div class="upper-row">
-                            <h3 class="job-title">{{ diploma.degree }}</h3>
-                            <div class="time">{{ diploma.timeframe }}</div>
-                        </div><!--//upper-row-->
-                        <div class="company">{{ diploma.university }}</div>
-                    </div><!--//meta-->
-                    <div class="details">
-                        <p>{{ diploma.description }}</p>  
-                    </div><!--//details-->
-                </div><!--//item-->
-                {% endfor %}
-            </section><!--//section-->
-            
-            <section class="skills-section section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-rocket"></i></span>Skills &amp; Proficiency</h2>
-                <div class="skillset">  
-                    {% for lang, details in person.programming_languages.items() %}
-                    <div class="item">
-                        <h3 class="level-title"> {{ lang }}</h3>
-                        <div class="progress level-bar">
-						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width:{{ details[1] }}%" aria-valuenow=" {{ details[1] }}" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>                               
-                    </div><!--//item-->
-                    {% endfor %}
-                </div>  
-            </section><!--//skills-section-->
-            
-        
-        
-        </div><!--//main-body-->
-
-        <div class="sidebar-wrapper">
-            <div class="profile-container">
-                <img class="profile" src="{{ url_for('static', filename='img/img_nono.jpg') }}" alt="" />
-                <h1 class="name">{{ person.first_name }} {{ person.last_name }}</h1>
-                <h3 class="tagline">{{ person.job }}</h3>
-            </div><!--//profile-container-->
-            
-            <div class="contact-container container-block">
-                <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fas fa-envelope"></i><a href="mailto: {{ person.email }}">{{ person.email }}</a></li>
-                    <li class="phone"><i class="fas fa-phone"></i><a href="tel:{{ person.tel }}">{{ person.tel }}</a></li>
-                    <li class="linkedin"><i class="fab {{ person.social_media[2].icon }}"></i><a href="{{ person.social_media[2].link }}" target="_blank">{{ person.social_media[2].link }}</a></li>
-                    <li class="github"><i class="fab {{ person.social_media[1].icon }}"></i><a href="{{ person.social_media[1].link }}" target="_blank">{{ person.social_media[1].link }}</a></li>
-                    <li class="twitter"><i class="fab {{ person.social_media[3].icon }}"></i><a href="{{ person.social_media[3].link }}" target="_blank">@{{ person.first_name }}</a></li>
-                </ul>
-            </div><!--//contact-container-->
-            <div class="education-container container-block" style='display: none;'>
-                <h2 class="container-block-title">Education</h2>
-                {% for diploma in person.education %}
-                <div class="item">
-                    <h4 class="degree">{{ diploma.degree }}</h4>
-                    <h5 class="meta">{{ diploma.university }}</h5>
-	                    <div class="time">{{ diploma.timeframe }}</div>
-                </div><!--//item-->
-                {% endfor %}
-            </div><!--//education-container-->
-            
-            <div class="languages-container container-block">
-                <h2 class="container-block-title">Languages</h2>
-                <ul class="list-unstyled interests-list">
-                    {% for lang, level in person.languages.items() %}
-                        <li>{{ lang }} <span class="lang-desc">({{ level }})</span></li>
-                    {% endfor %}
-                </ul>
-            </div><!--//interests-->
-            
-            <div class="interests-container container-block">
-                <h2 class="container-block-title">Interests</h2>
-                <ul class="list-unstyled interests-list">
-                    {% for interest in person.interests %}
-                        <li> {{ interest }}</li>
-                    {% endfor %}
-                </ul>
-            </div><!--//interests-->
-            
-        </div><!--//sidebar-wrapper-->
-        
+                    </svg>
+                    <p class="logo-text">kj</p>
+                </div>
+            </div>
+        <p>{{person.job}}</p>
+        <p>{{person.address}}</p>
+        <p>{{person.tel}}</p>
+        <p>{{person.email}}</p><br>
+        <p class="rela-block caps side-header">专业技能</p>
+        <p class="rela-block list-thing">HTML</p>
+        <p class="rela-block list-thing">CSS (Stylus)</p>
+        <p class="rela-block list-thing">JavaScript & jQuery</p>
+        <p class="rela-block list-thing">Killer Taste</p>
+        <p class="rela-block caps side-header">Education</p>
+        {% for edu in person.education%}
+        <p class="rela-block list-thing">{{edu.university}}</p>
+        <p class="rela-block list-thing">{{edu.degree}}</p>
+        <p class="rela-block list-thing">{{edu.description}}</p>
+        <p class="rela-block list-thing">{{edu.timeframe}}</p>
+        {%endfor%}
     </div>
-</body>
-</html> 
+    <div class="rela-block content-container">
+        <h2 class="rela-block caps title">Jr Front-End Developer</h2>
+        <div class="rela-block separator"></div>
+        <div class="rela-block caps greyed">个人简介</div>
+        <p class="long-margin">{{person.description}}</p>
+        <div class="rela-block caps greyed">工作经验</div>
+
+        {%for experience in person.experiences%}
+        <h3>Job #</h3>
+        <p class="light">job description</p>
+        <p class="justified">{{experience.title}}</p>
+        <p class="justified">{{experience.company}}</p>
+        <p class="justified">{{experience.description}}</p>
+        <p class="justified">{{experience.timeframe}}</p>
+        <p> </p>
+        {%endfor%}
+    </div>
+</div>
+
+    </body>
+</html>
 
