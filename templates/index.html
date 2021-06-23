@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Theme CSS -->
-<!--    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">-->
-        <link href="../static/css/resume.css" rel="stylesheet" type="text/css">
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
+<!--        <link href="../static/css/resume.css" rel="stylesheet" type="text/css">-->
     </head>
 
     <body>
@@ -18,7 +18,6 @@
             <div class="mugshot">
                 <div class="logo">
                     <svg viewbox="0 0 80 80" class="rela-block logo-svg">
-<!--                        <img src="{{ url_for('static', filename='img/img_nono.jpg') }}" alt="" />-->
                         <path d="M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z" stroke-width="2.5" fill="none"/>
 
                     </svg>
@@ -34,10 +33,10 @@
         <p class="rela-block list-thing">CSS (Stylus)</p>
         <p class="rela-block list-thing">JavaScript & jQuery</p>
         <p class="rela-block list-thing">Killer Taste</p>
-        <p class="rela-block caps side-header">Education</p>
+        <p class="rela-block caps side-header">学历</p>
         {% for edu in person.education%}
         <p class="rela-block list-thing">{{edu.university}}</p>
-        <p class="rela-block list-thing">{{edu.degree}}</p>
+<!--        <p class="rela-block list-thing">{{edu.degree}}</p>-->
         <p class="rela-block list-thing">{{edu.description}}</p>
         <p class="rela-block list-thing">{{edu.timeframe}}</p>
         {%endfor%}
@@ -47,11 +46,11 @@
         <div class="rela-block separator"></div>
         <div class="rela-block caps greyed">个人简介</div>
         <p class="long-margin">{{person.description}}</p>
-        <div class="rela-block caps greyed">工作经验</div>
+        <div class="rela-block caps greyed">项目经历</div>
 
         {%for experience in person.experiences%}
-        <h3>Job #</h3>
-        <p class="light">job description</p>
+        <h3>program #</h3>
+<!--        <p class="light">job description</p>-->
         <p class="justified">{{experience.title}}</p>
         <p class="justified">{{experience.company}}</p>
         <p class="justified">{{experience.description}}</p>

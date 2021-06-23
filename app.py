@@ -11,9 +11,9 @@ import csv, re, operator
 app = Flask(__name__)
 
 person = {
-    'name': '李凯',
-    'address': '银河系·太阳系·m78·洛圣都',
-    'job': '程序猿',
+    'name': '祝祥瑞',
+    'address': '湖北省·宜昌市',
+    'job': '在校学生',
     'tel': '123456789',
     'email': '123456789@yahoo.com',
     'description': '我身体健康，性格随和，五官端正，不怕苦不怕累。两年多的程序员生活锻炼了我坚强的意志，缜密的思维，以及强的抗压性;我做事有耐心，并且乐于学习新知识，更注重巩固旧知识。作为一名程序员，更重要的品质就是要懂得团队合作，而我恰好拥有团队合作精神，对工作认真负责。 　',
@@ -38,36 +38,26 @@ person = {
     'img': 'img/img_nono.jpg',
     'experiences': [
         {
-            'title': '程序员',
-            'company': '华为',
-            'description': '为HarmonyOS的发展奠定基础',
-            'timeframe': '2015.4--2016.8'
+            'title': 'python爬虫爬取图片',
+            'description': '用python爬虫爬取网页上的图片，并将图片以文件格式打包，保存到本地文件中',
+            'timeframe': '2020.10-2020.12'
         },
         {
-            'title': '项目主官',
-            'company': '网易',
-            'description': '担任过抖音的制作',
-            'timeframe': '2016.9-2018.2'
+            'title': 'web商城',
+            'description': '实现web商城的制作，能实现基本的购物，支付，登录，加入购物车等功能',
+            'timeframe': '2019.9-2019.12'
         },
         {
-            'title': '部门经理',
-            'company': '腾讯',
-            'description': '负责王者荣耀、DNF、CF等多个大型网游的管理工作',
-            'timeframe': '2018.5--'
+            'title': '文本识别微信小程序',
+            'description': '制作文本识别的微信小程序，实现文本识别，文字编辑，文字翻译等多种功能',
+            'timeframe': '2021.4-2021.6'
         }
     ],
     'education': [
         {
-            'university': '清华大学',
-            'degree': '学士',
-            'description': '多次荣获国家奖',
-            'timeframe': '2008 - 2012'
-        },
-        {
-            'university': '新加坡国立大学',
-            'degree': '硕士',
-            'description': '参与过多个大型实验室，完成过多个大型项目',
-            'timeframe': '2012-2015'
+            'university': '湖北师范大学',
+            'description': '软件工程',
+            'timeframe': '2018 - 2022'
         },
     ],
     'programming_languages': {
