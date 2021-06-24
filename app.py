@@ -82,23 +82,23 @@ def cv(person=person):
     return render_template('index.html', person=person)
 
 
-# @app.route('/callback', methods=['POST', 'GET'])
-# def cb():
-#     return gm(request.args.get('data'))
-#
-#
-# @app.route('/chart')
-# def index():
-#     return render_template('chartsajax.html', graphJSON=gm())
-#
-#
-# def gm(country='United Kingdom'):
-#     df = pd.DataFrame(px.data.gapminder())
-#
-#     fig = px.line(df[df['country'] == country], x="year", y="gdpPercap")
-#
-#     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-#     return graphJSON
+@app.route('/callback', methods=['POST', 'GET'])
+def cb():
+    return gm(request.args.get('data'))
+
+
+@app.route('/chart')
+def index():
+    return render_template('chartsajax.html', graphJSON=gm())
+
+
+def gm(地区='北京'):
+    df = pd.read_csv('./14-19年各省高考分数线.csv')
+
+    fig = px.line(df[df['地区']==地区], x="年份", y="分数线",color="批次")
+
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
 
 
 # @app.route('/senti')

@@ -36,7 +36,6 @@
         <p class="rela-block caps side-header">学历</p>
         {% for edu in person.education%}
         <p class="rela-block list-thing">{{edu.university}}</p>
-<!--        <p class="rela-block list-thing">{{edu.degree}}</p>-->
         <p class="rela-block list-thing">{{edu.description}}</p>
         <p class="rela-block list-thing">{{edu.timeframe}}</p>
         {%endfor%}
@@ -47,6 +46,7 @@
         <div class="rela-block caps greyed">个人简介</div>
         <p class="long-margin">{{person.description}}</p>
         <div class="rela-block caps greyed">项目经历</div>
+        <p><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
 
         {%for experience in person.experiences%}
         <h3>program #</h3>
