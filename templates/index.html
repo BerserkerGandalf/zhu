@@ -1,65 +1,89 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
+<head>
+
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
-<!--        <link href="../static/css/resume.css" rel="stylesheet" type="text/css">-->
-    </head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!--    <link href="../static/css/resume.css" rel="stylesheet">-->
 
-    <body>
-        <div class="rela-block page">
-        <div class="rela-block top-bar">
-            <div class="caps name"><div class="abs-center">{{person.name}}</div></div>
-        </div>
-        <div class="side-bar">
-            <div class="mugshot">
-                <div class="logo">
-                    <svg viewbox="0 0 80 80" class="rela-block logo-svg">
-                        <path d="M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z" stroke-width="2.5" fill="none"/>
+</head>
 
-                    </svg>
-                    <p class="logo-text">kj</p>
-                </div>
-            </div>
-        <p>{{person.job}}</p>
-        <p>{{person.address}}</p>
-        <p>{{person.tel}}</p>
-        <p>{{person.email}}</p><br>
-        <p class="rela-block caps side-header">专业技能</p>
-        <p class="rela-block list-thing">HTML</p>
-        <p class="rela-block list-thing">CSS (Stylus)</p>
-        <p class="rela-block list-thing">JavaScript & jQuery</p>
-        <p class="rela-block list-thing">Killer Taste</p>
-        <p class="rela-block caps side-header">学历</p>
-        {% for edu in person.education%}
-        <p class="rela-block list-thing">{{edu.university}}</p>
-        <p class="rela-block list-thing">{{edu.description}}</p>
-        <p class="rela-block list-thing">{{edu.timeframe}}</p>
-        {%endfor%}
-    </div>
-    <div class="rela-block content-container">
-        <h2 class="rela-block caps title">Jr Front-End Developer</h2>
-        <div class="rela-block separator"></div>
-        <div class="rela-block caps greyed">个人简介</div>
-        <p class="long-margin">{{person.description}}</p>
-        <div class="rela-block caps greyed">项目经历</div>
-        <p><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
 
-        {%for experience in person.experiences%}
-        <h3>program #</h3>
-<!--        <p class="light">job description</p>-->
-        <p class="justified">{{experience.title}}</p>
-        <p class="justified">{{experience.company}}</p>
-        <p class="justified">{{experience.description}}</p>
-        <p class="justified">{{experience.timeframe}}</p>
-        <p> </p>
-        {%endfor%}
-    </div>
+<body>
+    <div class="container">
+  <div class="word_split wrapper">
+  <span class="word word1">ZHUXIAN</span>
+  <span class="word word2">GRUI</span>
+  <span class="word word3">Personal</span>
+  <span class="word word4">Details</span>
+  <span class="word word5">Employment</span>
+  <span class="word word6">History </span>
+  <span class="word word7">Education</span>
+  <span class="word word8">Personal</span>
+  <span class="word word9">Skills </span>
+  <span class="word word10">Technical</span>
+  <span class="word word11">Skills </span>
+  <span class="word word12">Get In </span>
+  <span class="word word13">Touch</span>
+
+    <div class="bubble1">
+     <span class="the-arrow1"></span>
+      HI <br/> I am..
+   </div>
+  <div class="bubble2">
+     <span class="the-arrow2"></span>
+    <img src="https://dribbble.s3.amazonaws.com/users/10958/screenshots/271458/librarian.jpg"/>
+   </div>
+  <div class="bubble3">
+     <span class="the-arrow3"></span>
+    {{person.address}}<br/>
+    {{person.tel}}<br/>
+    {{person.email}}<br/>
+    {{person.job}}<br/>
+      <p><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
+<!--    ETC...<br/>-->
+<!--    ETC...<br/>-->
+   </div>
+  <div class="bubble4">
+     <span class="the-arrow4"></span>
+
+      {{person.experiences[2].title}}<br/>
+      {{person.experiences[2].description}}<br/>
+      {{person.experiences[2].timeframe}}<br/>
+
+   </div>
+  <div class="bubble5">
+     <span class="the-arrow5"></span>
+      {%for edu in person.education%}
+    {{edu.university}}<br/>
+    {{edu.description}}<br/>
+    {{edu.timeframe}}<br/><br/>
+      {%endfor%}
+
+
+   </div>
+  <div class="bubble6">
+     <span class="the-arrow6"></span>
+    吃苦耐劳<br/>
+    性格随和<br/>
+    乐于学习新知识<br/>
+    有较好的社交能力<br/>
+    有团队精神<br/>
+   </div>
+  <div class="bubble7">
+     <span class="the-arrow7"></span>
+      {%for skill in person.programming_languages%}
+    {{skill}}<br/>
+      {%endfor%}
+
+   </div>
+  <div class="bubble8">
+     <span class="the-arrow8"></span>
+    音乐<br/>
+    绘画<br/>
+      电子竞技<br/>
+   </div>
 </div>
 
-    </body>
-</html>
+</div><!--end container-->
 
+</body>
