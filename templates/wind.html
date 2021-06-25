@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function cb(selection) {
+            $.getJSON({
+                url: "/callback", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('wind', result, {});;
+                }
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body style="font-family:arial, sans-serif">
+    <h1>对于风的可视化分析</h1>
+
+    <div id="wind" class="wind"></div>
+    <div id="wind1" class="wind1"></div>
+    <div id="wind2" class="wind2"></div>
+</body>
+
+<script>
+    d = {{ graphJSON | safe }};
+    Plotly.newPlot('wind', d, {});
+    c = {{ graphJSON1 | safe }};
+    Plotly.newPlot('wind1', c, {});
+    b = {{ graphJSON2 | safe }};
+    Plotly.newPlot('wind2', b, {});
+</script>
+
+
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function cb(selection) {
+            $.getJSON({
+                url: "/callback", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('tips', result, {});;
+                }
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body style="font-family:arial, sans-serif">
+    <h1>对于小费的可视化分析</h1>
+
+    <div id="tips" class="tips"></div>
+    <div id="tips1" class="tips1"></div>
+    <div id="tips2" class="tips1"></div>
+</body>
+
+<script>
+    d = {{ graphJSON | safe }};
+    Plotly.newPlot('tips', d, {});
+    c = {{ graphJSON1 | safe }};
+    Plotly.newPlot('tips1', c, {});
+    b = {{ graphJSON2 | safe }};
+    Plotly.newPlot('tips2', b, {});
+</script>
+
+
+</html>

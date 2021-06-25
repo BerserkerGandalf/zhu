@@ -11,8 +11,8 @@
 <body>
     <div class="container">
   <div class="word_split wrapper">
-  <span class="word word1">ZHUXIAN</span>
-  <span class="word word2">GRUI</span>
+  <span class="word word1">MR</span>
+  <span class="word word2">ZHU</span>
   <span class="word word3">Personal</span>
   <span class="word word4">Details</span>
   <span class="word word5">Employment</span>
@@ -22,8 +22,8 @@
   <span class="word word9">Skills </span>
   <span class="word word10">Technical</span>
   <span class="word word11">Skills </span>
-  <span class="word word12">Get In </span>
-  <span class="word word13">Touch</span>
+  <span class="word word12">Recent </span>
+  <span class="word word13">Work</span>
 
     <div class="bubble1">
      <span class="the-arrow1"></span>
@@ -39,7 +39,10 @@
     {{person.tel}}<br/>
     {{person.email}}<br/>
     {{person.job}}<br/>
-      <p><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
+      音乐<br/>
+    绘画<br/>
+      电子竞技<br/>
+
 <!--    ETC...<br/>-->
 <!--    ETC...<br/>-->
    </div>
@@ -78,9 +81,11 @@
    </div>
   <div class="bubble8">
      <span class="the-arrow8"></span>
-    音乐<br/>
-    绘画<br/>
-      电子竞技<br/>
+    <p><a href="{{url_for('index')}}" target="_blank">高考各省历年分数线的可视化分析</a></p>
+      <p><a href="{{url_for('iris')}}" target="_blank">鸢尾花的可视化分析</a></p>
+      <p><a href="{{url_for('tips')}}" target="_blank">小费的可视化分析</a></p>
+      <p><a href="{{url_for('wind')}}" target="_blank">风的可视化分析</a></p>
+      <p><a href="{{url_for('gapminder')}}" target="_blank">城市人口年龄与GDP的可视化分析</a></p>
    </div>
 </div>
 

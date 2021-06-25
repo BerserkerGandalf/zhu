@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function cb(selection) {
+            $.getJSON({
+                url: "/callback", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('gapminder', result, {});;
+                }
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body style="font-family:arial, sans-serif">
+    <h1>对于城市人们的年龄与GDP的可视化分析</h1>
+
+    <div id="gap" class="gap"></div>
+    <div id="gap1" class="gap1"></div>
+    <div id="gap2" class="gap2"></div>
+</body>
+
+<script>
+    d = {{ graphJSON | safe }};
+    Plotly.newPlot('gap', d, {});
+    c = {{ graphJSON1 | safe }};
+    Plotly.newPlot('gap1', c, {});
+    b = {{ graphJSON2 | safe }};
+    Plotly.newPlot('gap2', b, {});
+</script>
+
+
+</html>

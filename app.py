@@ -94,13 +94,98 @@ def index():
 
 def gm(地区='北京'):
     df = pd.read_csv('./14-19年各省高考分数线.csv')
-
-    fig = px.line(df[df['地区']==地区], x="年份", y="分数线",color="批次")
-
+    fig = px.line(df[df['地区']==地区], x="年份", y="分数线",color="批次",line_group="考生类别")
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
+@app.route('/iris')
+def iris():
+    return render_template('iris.html',graphJSON=ir(),graphJSON1=ir1())
 
+def ir():
+    df=pd.DataFrame(px.data.iris())
+    fig = px.scatter(df,x='sepal_length',y='sepal_width',color='species')
+    graphJSON = json.dumps(fig,cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def ir1():
+    df = pd.DataFrame(px.data.iris())
+    fig = px.density_heatmap(df, x='sepal_length', y='sepal_width',marginal_x='rug',marginal_y='histogram')
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+@app.route('/gapminder')
+def gapminder():
+    return render_template('gapminder.html', graphJSON=gap(),graphJSON1=gap1(),graphJSON2=gap2())
+
+def gap():
+    df = pd.DataFrame(px.data.gapminder())
+    fig = px.scatter(df, x='gdpPercap', y='lifeExp',color='continent')
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def gap1():
+    df = pd.DataFrame(px.data.gapminder())
+    fig = px.scatter(df, x='gdpPercap', y='lifeExp',size_max=60,color='continent',hover_name='country',
+                     animation_frame='year',animation_group='country',log_x=True,range_x=[100,100000],range_y=[25,90],
+                     labels=dict(pop="Population",gdpPercap="GDP per Capita",lifeExp="life Expectancy"))
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def gap2():
+    df = pd.DataFrame(px.data.gapminder())
+    fig = px.choropleth(df, locations="iso_alpha", color="lifeExp",
+                        hover_name="country", animation_frame="year",
+                        range_color=[20, 80], projection="natural earth")
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+@app.route('/tips')
+def tips():
+    return render_template('tips.html', graphJSON=tp(),graphJSON1=tp1(),graphJSON2=tp2())
+
+def tp():
+    df = pd.DataFrame(px.data.tips())
+    fig = px.parallel_categories(df, color="size", color_continuous_scale=px.colors.sequential.Inferno)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def tp1():
+    df = pd.DataFrame(px.data.tips())
+    fig = px.scatter(df, x="total_bill", y="tip",color="size",facet_col="sex")
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def tp2():
+    df = pd.DataFrame(px.data.tips())
+    fig = px.box(df,x="day",y="total_bill",color="smoker",notched=True)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+@app.route('/wind')
+def wind():
+    return render_template('wind.html', graphJSON=wd(),graphJSON1=wd1(),graphJSON2=wd2())
+
+def wd():
+    df = pd.DataFrame(px.data.wind())
+    fig = px.scatter_polar(df,r="frequency",theta="direction",color="strength",symbol="strength"
+                      ,color_discrete_sequence=px.colors.sequential.Plasma_r)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def wd1():
+    df = pd.DataFrame(px.data.wind())
+    fig = px.line_polar(df, r="frequency", theta="direction", color="strength", line_close=True
+                        , color_discrete_sequence=px.colors.sequential.Plasma_r)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def wd2():
+    df = pd.DataFrame(px.data.wind())
+    fig = px.bar_polar(df, r="frequency", theta="direction", color="strength", template="plotly_dark"
+                       , color_discrete_sequence=px.colors.sequential.Plasma_r)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
 # @app.route('/senti')
 # def main():
 #     text = ""
