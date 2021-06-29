@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <!--    <link href="../static/css/resume.css" rel="stylesheet">-->
+    <title>个人简历</title>
 
 </head>
 
@@ -84,9 +85,13 @@
     <p><a href="{{url_for('index')}}" target="_blank">高考各省历年分数线的可视化分析</a></p>
       <p><a href="{{url_for('iris')}}" target="_blank">鸢尾花的可视化分析</a></p>
       <p><a href="{{url_for('tips')}}" target="_blank">小费的可视化分析</a></p>
-      <p><a href="{{url_for('wind')}}" target="_blank">风的可视化分析</a></p>
+      <p><a href="{{url_for('wind')}}" target="_blank">风向的可视化分析</a></p>
       <p><a href="{{url_for('gapminder')}}" target="_blank">城市人口年龄与GDP的可视化分析</a></p>
    </div>
+
+    <div style="position:fixed;z-index:100;right:0;bottom:0;font-size:30px">
+        <a href="https://codepen.io/SaraSoueidan/pen/pdEec">个人简历模板地址</a>
+    </div>
 </div>
 
 </div><!--end container-->
